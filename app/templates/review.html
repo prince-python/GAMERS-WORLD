@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
+	<!-- Page section -->
+	<div class="row mt-5 p-5 ">
+		{% for i in g%}
+		<div class="col-3 mt-5 p-5  h-25 w-25  text-white">
+			<div class="card shadow-lg" style="width: 18rem;">
+				<img class="card-img-top " style="height:200px;width:100%;" src="{{i.img.url}}" alt="no img found">
+				<div class="card-body bg-dark">
+				 <center> <h5 class="card-title bg-black">{{i.title}}</h5>
+				  <a href="../gameview/{{i.id}}" class="btn btn-primary ">View</a></center>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<!-- Page section end -->
+
+	<!-- Review section end -->
+{% endblock %}
