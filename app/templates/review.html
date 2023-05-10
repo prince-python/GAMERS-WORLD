@@ -2,11 +2,13 @@
 {% load static %}
 {% block content  %}
 	<!-- Page section -->
-	<div class="row mt-5 p-5 ">
-		{% for i in g%}
-		<div class="col-3 mt-5 p-5  h-25 w-25  text-white">
+	
+	<center><div class="row w-75 mt-5 mb-5 ">
+	{% for i in g%}
+	
+		<div class="col-sm-4  h-50 mb-4  text-white">
 			<div class="card shadow-lg" style="width: 18rem;">
-				<img class="card-img-top " style="height:200px;width:100%;" src="{{i.img.url}}" alt="no img found">
+				<img class="card-img-top p-3" style="height:200px;width:100%;" src="{{i.img.url}}" alt="no img found">
 				<div class="card-body bg-dark">
 				 <center> <h5 class="card-title bg-black">{{i.title}}</h5>
 				  <a href="../gameview/{{i.id}}" class="btn btn-primary ">View</a></center>
@@ -14,7 +16,12 @@
 			</div>
 		</div>
 		{% endfor %}
-	</div>
+	</div></center>
+
+		
+	
+	
+
 	<!-- Page section end -->
 
 	<!-- Review section end -->

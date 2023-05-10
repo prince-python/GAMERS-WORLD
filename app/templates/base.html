@@ -37,9 +37,9 @@
 				<img src="{% static 'img/logo.pn' %}" alt="">
 			</a>
 			
-				<button type="button" class="btn btn-warning shadow-lg" data-toggle="modal" data-target="#exampleModal">
-                    Login/Register
-                  </button>
+            <button type="button" class="btn btn-warning shadow-lg" data-toggle="modal" data-target="#exampleModal">
+                Login register
+              </button>
 			
 			<!-- responsive -->
 			<div class="nav-switch">
@@ -51,6 +51,7 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="../games">Games</a></li>
 					<li><a href="../contact">Contact</a></li>
+                    
 				</ul>
 			</nav>
 		</div>
@@ -63,36 +64,43 @@
     
     {% endblock %}
 </div>
+<script>
+    {%if messages%}
+        {%for message in messages%}
+            window.alert('{{message}}')
+        {%endfor%}
+    {%endif%}    
+  </script>
 <!-- Button trigger modal -->
 
   
   <!-- Modal -->
-  <div class="modal   fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog bg-warning  p-2 rounded rounded-5" role="document">
-      <div class="modal-content shadow-lg bg-warning">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Sign-Up</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body p-5">
-            <form action="" class="p-5" >
-                <label for="">Name</label>
-                <input type="text" class="form-control"><br>
-                <label for="">Email</label>
-                <input type="text" class="form-control"><br>
-                <label for="">Password</label>
-                <input type="text" class="form-control"><br>
-                <label for="">Confirm-Password</label>
-                <input type="text" class="form-control"><br>
-                <input type="submit" class="btn btn-outline-success text-dark" value="submit"><br>
-            </form>
-               </div>
-        
+        <div class="modal-body">
+           <center><form action="../formsave/" method="Post"> <div class="p-5 ">
+            {% csrf_token %}
+            {{error}}
+            {{form.as_p}}
+        <button class="btn btn-outline-warning text-black">Submit</button></div></form></center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
+<!-- Button trigger modal -->
+
+  
 <!-- Footer top section -->
 <section class="footer-top-section">
     <div class="container">
@@ -137,7 +145,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <!-- <div class="col-lg-4 col-md-6">
                 <div class="footer-widget">
                     <h4 class="fw-title">Top Comments</h4>
                     <div class="top-comment">
@@ -174,7 +182,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Footer top section end -->
 
 	

@@ -3,7 +3,7 @@ from django.utils.timezone import datetime
 # Create your models here.
 
 class User(models.Model):
-    name=models.EmailField(max_length=254)
+    name=models.CharField(max_length=254)
     email= models.EmailField( max_length=254)
     pwd=models.CharField(max_length=300)
     d = models.DateTimeField( auto_now_add=True)
