@@ -4,7 +4,11 @@ from .forms import*
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib import sessions
+from django.contrib.auth.decorators import login_required
 
+
+
+@login_required
 def index(request):
     form=UserForm()
     return render(request,'index.html',{"form":form})
@@ -26,27 +30,22 @@ def formsave(request):
             user=User.objects.create(name=name,email=email,pwd=pwd)
             user.save()
             name=User.objects.get(email=email)
-            request.sessions["email"]=email
             messages.success(request,"successfully registered")
             return render(request,'index.html',{"name":name})
             
 
 
-
-
-
+@login_required
 def contact(request):
     form=UserForm()
     return render(request,'contact.html',{"form":form})
 
 
-
-
+@login_required
 def games(request):
     g=Game.objects.all()
     form=UserForm()
     return render(request,'review.html',{'g':g,"form":form})
-
 
 
 def gameview(request,id):

@@ -13,6 +13,7 @@ class User(models.Model):
 
 
 class Game(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
     title=models.CharField(max_length=200 ,blank=False)
     description=models.CharField(max_length=1000, blank=False)
     link=models.CharField(max_length=10000)
