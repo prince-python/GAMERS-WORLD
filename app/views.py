@@ -36,18 +36,20 @@ def formsave(request):
 
 
 def contact(request):
-    
-    return render(request,'contact.html')
+    form=UserForm()
+    return render(request,'contact.html',{"form":form})
 
 
 
 
 def games(request):
     g=Game.objects.all()
-    return render(request,'review.html',{'g':g})
+    form=UserForm()
+    return render(request,'review.html',{'g':g,"form":form})
 
 
 
 def gameview(request,id):
     g=Game.objects.filter(id=id)
-    return render(request,'gameview.html',{'g':g})
+    form=UserForm()
+    return render(request,'gameview.html',{'g':g,"form":form})

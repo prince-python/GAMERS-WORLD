@@ -3,18 +3,19 @@
 {% block content  %}
 	<!-- Page section -->
 	
-	<center><div class="row w-75 mt-5 mb-5 ">
+	<center><div class="row h-50 mt-5 mb-5 align-item-center  my-2 p-4 w-75">
 	{% for i in g%}
 	
-		<div class="col-sm-4  h-50 mb-4  text-white">
-			<div class="card shadow-lg" style="width: 18rem;">
-				<img class="card-img-top p-3" style="height:200px;width:100%;" src="{{i.img.url}}" alt="no img found">
-				<div class="card-body bg-dark">
-				 <center> <h5 class="card-title bg-black">{{i.title}}</h5>
-				  <a href="../gameview/{{i.id}}" class="btn btn-primary ">View</a></center>
+		
+			<div class="card shadow-lg bg-white mb-4 my-4 mt-4 mx-2 h-80 col-sm-3 " >
+				<img class="card-img-top " style="height:200px;width:100%;" src="{{i.img.url}}" alt="no img found">
+				<div class="card-body   bg-white w-100">
+				 <center> <h5 class="card-title text-wite">{{i.title.upper}}</h5>
+					
+				  <a href="../gameview/{{i.id}}" class="btn btn-warning text-black ">Download</a></center>
 				</div>
 			</div>
-		</div>
+	
 		{% endfor %}
 	</div></center>
 
