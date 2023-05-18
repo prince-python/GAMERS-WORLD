@@ -9,6 +9,7 @@ urlpatterns = [
     path('games/',views.games ,name='game'),
     path('gameview/<int:id>/',views.gameview),
     path('formsave/',views.formsave),
+    path('login/',views.login),
     
     
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

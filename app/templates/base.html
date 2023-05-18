@@ -43,7 +43,7 @@
 			</a>
 			
             <button type="button" class="btn btn-warning shadow-lg" data-toggle="modal" data-target="#exampleModal">
-                Login register
+                Register
               </button>
 			
 			<!-- responsive -->
@@ -80,25 +80,24 @@
 
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade opacity-25"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog bg-dark" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title text-white" id="exampleModalLabel">REGISTER</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-warning">
            <center><form action="../formsave/" method="Post"> <div class="p-5 ">
             {% csrf_token %}
             {{error}}
             {{form.as_p}}
-        <button class="btn btn-outline-warning text-black">Submit</button></div></form></center>
+        <button class="btn btn-outline-primary text-black">Submit</button></div></form></center>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer bg-dark">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -199,8 +198,11 @@
 	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'js/jquery.marquee.min.js' %}"></script>
 	<script src="{% static 'js/main.js' %}"></script>
-    <script>$('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-      })</script>
+ 
+      <script >
+        $(window).on('load', function() {
+            $('#exampleModal').modal('show');
+        });
+    </script>
     </body>
 </html>

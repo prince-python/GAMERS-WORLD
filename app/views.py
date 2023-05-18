@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
-@login_required
+
 def index(request):
     form=UserForm()
     return render(request,'index.html',{"form":form})
@@ -35,13 +35,27 @@ def formsave(request):
             
 
 
+def login(request):
+    if request.method =='POST':
+        email=request.POST['email']
+        pwd=request.POST['pwd']
+        if User.objects.filter(email=email).exists() and User.objects.filter(pwd=pwd).exists():
+            messages.success(request,"LOGIN SUCCESSFULL")
+            form=UserForm()
+            return render(request,'index.html',{"form":form})
+        else:
+            messages.error(request,"CHECK EMAIL OR PASSWORD")
+            return render(request,'login.html')
+            
+    return render(request,'login.html')
+
 @login_required
 def contact(request):
     form=UserForm()
     return render(request,'contact.html',{"form":form})
 
 
-@login_required
+@login_required(login_url="../login/")
 def games(request):
     g=Game.objects.all()
     form=UserForm()

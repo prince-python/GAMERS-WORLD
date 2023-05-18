@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/signup.css'%}"/>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  {%if messages%}
+      {%for message in messages%}
+          window.alert('{{message}}')
+      {%endfor%}
+  {%endif%}    
+</script>
+<body class="bg-dark">
+  <form class="form mt-5" action="../login/" method="POST">
+    {% csrf_token %}
+    <label class="lb" for="nome">Email</label>
+          <input name="email" id="nome" type="email" class="infos">
+    
+          <label for="email" class="lb">Password</label>
+          <input name="pwd" id="email" type="text" class="infos">
+          <div class="d-flex justify-content-between mt-4">
+          <button id="send" type="submit">Login</button>
+          <button id="limpar" type="reset">Clear </button></div>
+        </form>
+</body>
+</html>
+  
