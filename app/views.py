@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib import sessions
 from django.contrib.auth.decorators import login_required
-
+from django.core.mail import send_mail
 
 
 
@@ -49,7 +49,7 @@ def login(request):
             
     return render(request,'login.html')
 
-@login_required
+
 def contact(request):
     form=UserForm()
     return render(request,'contact.html',{"form":form})
@@ -61,8 +61,16 @@ def games(request):
     form=UserForm()
     return render(request,'review.html',{'g':g,"form":form})
 
-
+@login_required(login_url="../login/")
 def gameview(request,id):
     g=Game.objects.filter(id=id)
     form=UserForm()
     return render(request,'gameview.html',{'g':g,"form":form})
+
+
+def send(request):
+    email=request.POST['email']
+    msg=request.POST['msg']
+    subject=request.POST['msg']
+    send_mail(subject,msg,"choudharyprince140@gmail.com",[email])
+    return render(request,'contact.html')
