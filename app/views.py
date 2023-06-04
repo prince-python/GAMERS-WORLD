@@ -36,18 +36,22 @@ def formsave(request):
 
 
 def login(request):
-    if request.method =='POST':
-        email=request.POST['email']
-        pwd=request.POST['pwd']
-        if User.objects.filter(email=email).exists() and User.objects.filter(pwd=pwd).exists():
-            messages.success(request,"LOGIN SUCCESSFULL")
-            form=UserForm()
-            return render(request,'index.html',{"form":form})
+    try:
+        if request.method =='POST':
+                email=request.POST['email']
+                pwd=request.POST['pwd']
+                if User.objects.filter(email=email).exists() and User.objects.filter(pwd=pwd).exists():
+                    messages.success(request,"LOGIN SUCCESSFULL")
+                    form=UserForm()
+                    return render(request,'index.html',{"form":form})
+                else:
+                    messages.error(request,"CHECK EMAIL OR PASSWORD")
+                    return render(request,'login.html')
         else:
-            messages.error(request,"CHECK EMAIL OR PASSWORD")
             return render(request,'login.html')
-            
-    return render(request,'login.html')
+    except:
+        print("cant send ")
+        
 
 
 def contact(request):
@@ -69,8 +73,11 @@ def gameview(request,id):
 
 
 def send(request):
-    email=request.POST['email']
-    msg=request.POST['msg']
-    subject=request.POST['msg']
-    send_mail(subject,msg,"choudharyprince140@gmail.com",[email])
-    return render(request,'contact.html')
+    try:
+        email=request.POST['email']
+        msg=request.POST['msg']
+        subject=request.POST['msg']
+        send_mail(subject,msg,"choudharyprince140@gmail.com",[email])
+        return render(request,'contact.html')
+    except:
+        print("cant send ")
