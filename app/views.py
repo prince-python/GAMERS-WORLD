@@ -18,21 +18,24 @@ def index(request):
 
 
 def formsave(request):
-    if request.method=="POST":
-        name=request.POST['name']
-        email=request.POST['email']
-        pwd=request.POST['pwd']
-        if User.objects.filter(email=email).exists():
-            form=UserForm()
-            messages.error(request,"email already exists try with new email")
-            return render(request,'index.html',{"form":form,"error":"Email Already Exists"})
-        else:
-            user=User.objects.create(name=name,email=email,pwd=pwd)
-            user.save()
-            name=User.objects.get(email=email)
-            messages.success(request,"successfully registered")
-            return render(request,'index.html',{"name":name})
-            
+    try:
+        if request.method=="POST":
+            name=request.POST['name']
+            email=request.POST['email']
+            pwd=request.POST['pwd']
+            if User.objects.filter(email=email).exists():
+                form=UserForm()
+                messages.error(request,"email already exists try with new email")
+                return render(request,'index.html',{"form":form,"error":"Email Already Exists"})
+            else:
+                user=User.objects.create(name=name,email=email,pwd=pwd)
+                user.save()
+                name=User.objects.get(email=email)
+                messages.success(request,"successfully registered")
+                return render(request,'index.html',{"name":name})
+    except:
+        print("error data")
+                
 
 
 def login(request):
@@ -76,8 +79,10 @@ def send(request):
     try:
         email=request.POST['email']
         msg=request.POST['msg']
-        subject=request.POST['msg']
+        subject=request.POST['subject']
         send_mail(subject,msg,"choudharyprince140@gmail.com",[email])
-        return render(request,'contact.html')
+        form=UserForm()
+        return render(request,'contact.html',{"form":form})
     except:
-        print("cant send ")
+        form=UserForm()
+        return render(request,'contact.html',{"form":form})
