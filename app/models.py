@@ -45,3 +45,4 @@ class Images(models.Model):
     
 class like(models.Model):
     Comment=models.ForeignKey(Comment, on_delete=models.CASCADE)
+    User=user.name = models.ForeignKey(User, on_delete=models.CASCADE)
